@@ -9,3 +9,41 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.Calculator {
+	height: 60vmin;
+	width: 40vmin;
+}
+
+.Display {
+	height: 6vmin;
+	width: 100%;
+	background-color: rgba(64,66,68,.8);
+	border-radius: 8%;
+	
+}
+
+table {
+	height: 100%;
+	width: 100%;
+}
+
+td {
+	text-align: center;
+	background-color: #646668;
+	height: 10%;
+	width: 20%;
+	border-radius: 8%;
+}
+
+td:hover {
+	background-color: rgba(64,66,68,.8);
+}
+
+.Operator {
+	background-color: #17A15E;
+}
+
+.Unit {
+	background-color: #FF9800;
+}
