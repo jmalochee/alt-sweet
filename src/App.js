@@ -16,31 +16,31 @@ function App() {
           </div>
             <table className="Keypad">
               <tr>
-                <td className="Unit"> big </td>
-                <td> 1 </td>
-                <td> 2 </td>
-                <td> 3 </td>
+                <td className="Number"> ac </td>
+                <td className="Number"> 1 </td>
+                <td className="Number"> 2 </td>
+                <td className="Number"> 3 </td>
                 <td className="Operator"> / </td>
               </tr>
               <tr>
                 <td className="Unit"> med </td>
-                <td> 4 </td>
-                <td> 5 </td>
-                <td> 6 </td>
+                <td className="Number"> 4 </td>
+                <td className="Number"> 5 </td>
+                <td className="Number"> 6 </td>
                 <td className="Operator"> x </td>
               </tr>
               <tr>
                 <td className="Unit"> small </td>
-                <td> 7 </td>
-                <td> 8 </td>
-                <td> 9 </td>
+                <td className="Number"> 7 </td>
+                <td className="Number"> 8 </td>
+                <td className="Number"> 9 </td>
                 <td className="Operator">- </td>
               </tr>
               <tr>
-                <td> ac </td>
-                <td> . </td>
-                <td> 0 </td>
-                <td> x/y </td>
+                <td className="Unit"> big </td>
+                <td className="Number"> . </td>
+                <td className="Number"> 0 </td>
+                <td className="Number"> x/y </td>
                 <td className="Operator"> + </td>
               </tr>
             </table>
