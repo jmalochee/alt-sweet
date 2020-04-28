@@ -11,8 +11,8 @@
 }
 
 .Calculator {
-	height: 60vmin;
-	width: 40vmin;
+	height: 50vmin;
+	width: 50vmin;
 }
 
 .Display {
@@ -20,7 +20,7 @@
 	width: 100%;
 	background-color: rgba(64,66,68,.8);
 	border-radius: 8%;
-	
+	text-align: center;
 }
 
 table {
@@ -30,14 +30,16 @@ table {
 
 td {
 	text-align: center;
-	background-color: #646668;
 	height: 10%;
 	width: 20%;
 	border-radius: 8%;
 }
-
 td:hover {
-	background-color: rgba(64,66,68,.8);
+	filter: brightness(125%);
+}
+
+.Number {
+	background-color: #646668;
 }
 
 .Operator {
