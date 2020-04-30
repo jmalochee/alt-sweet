@@ -16,11 +16,13 @@
 }
 
 .Display {
-	height: 6vmin;
 	width: 100%;
 	background-color: rgba(64,66,68,.8);
-	border-radius: 8%;
-	text-align: center;
+	border-radius: 1vmin;
+	text-align: right;
+	font-size: 4vmin;
+	padding: 2vmin;
+	box-sizing: border-box;
 }
 
 table {
@@ -32,7 +34,7 @@ td {
 	text-align: center;
 	height: 10%;
 	width: 20%;
-	border-radius: 8%;
+	border-radius: 1vmin;
 }
 td:hover {
 	filter: brightness(125%);
@@ -43,9 +45,13 @@ td:hover {
 }
 
 .Operator {
-	background-color: #17A15E;
+	background-color: #30A5B4;
 }
 
 .Unit {
-	background-color: #FF9800;
+	background-color: #9366D0;
+}
+
+.AC {
+	background-color: #A8A04D;
 }

@@ -16,7 +16,7 @@ function App() {
           </div>
             <table className="Keypad">
               <tr>
-                <td className="Number"> ac </td>
+                <td className="AC"> ac </td>
                 <td className="Number"> 1 </td>
                 <td className="Number"> 2 </td>
                 <td className="Number"> 3 </td>
