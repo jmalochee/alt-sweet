@@ -1,4 +1,5 @@
-import React, {Component} from "react"
+import React, {Component} from "react";
+import Key from "./Key";
 
 class Keypad extends Component {
 	constructor(props) {
@@ -10,32 +11,92 @@ class Keypad extends Component {
 			<table className="Keypad">
 				<tbody>
 	              <tr>
-	                <td className="AC"> ac </td>
-	                <td className="Number"> 1 </td>
-	                <td className="Number"> 2 </td>
-	                <td className="Number"> 3 </td>
-	                <td className="Operator"> / </td>
+	                <Key 
+	                	type="AC" 
+	                	val="ac"
+	                />
+	                <Key 
+	                	type="Number" 
+	                	val="1"
+	                />
+	                <Key 
+	                	type="Number" 
+	                	val="2"
+	                />
+	                <Key 
+	                	type="Number" 
+	                	val="3"
+	                />
+	                <Key 
+	                	type="Operator" 
+	                	val="/"
+	                />
 	              </tr>
 	              <tr>
-	                <td className="Unit"> med </td>
-	                <td className="Number"> 4 </td>
-	                <td className="Number"> 5 </td>
-	                <td className="Number"> 6 </td>
-	                <td className="Operator"> x </td>
+	                <Key 
+	                	type="Unit" 
+	                	val="small"
+	                />
+	                <Key 
+	                	type="Number" 
+	                	val="4"
+	                />
+	                <Key 
+	                	type="Number" 
+	                	val="5"
+	                />
+	                <Key 
+	                	type="Number" 
+	                	val="6"
+	                />
+	                <Key 
+	                	type="Operator" 
+	                	val="x"
+	                />
 	              </tr>
 	              <tr>
-	                <td className="Unit"> small </td>
-	                <td className="Number"> 7 </td>
-	                <td className="Number"> 8 </td>
-	                <td className="Number"> 9 </td>
-	                <td className="Operator">- </td>
+	                <Key 
+	                	type="Unit" 
+	                	val="med"
+	                />
+	                <Key 
+	                	type="Number" 
+	                	val="7"
+	                />
+	                <Key 
+	                	type="Number" 
+	                	val="8"
+	                />
+	                <Key 
+	                	type="Number" 
+	                	val="9"
+	                />
+	                <Key 
+	                	type="Operator" 
+	                	val="-"
+	                />
 	              </tr>
 	              <tr>
-	                <td className="Unit"> big </td>
-	                <td className="Number"> . </td>
-	                <td className="Number"> 0 </td>
-	                <td className="Number"> x/y </td>
-	                <td className="Operator"> + </td>
+	                <Key 
+	                	type="Unit" 
+	                	val="big"
+	                />
+	                <Key 
+	                	type="Number" 
+	                	val="."
+	                />
+	                <Key 
+	                	type="Number" 
+	                	val="0"
+	                />
+	                <Key 
+	                	type="Number" 
+	                	val="x/y"
+	                />
+	                <Key 
+	                	type="Operator" 
+	                	val="+"
+	                />
 	              </tr>
 	        	</tbody>
             </table>
