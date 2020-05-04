@@ -7,8 +7,12 @@ class Key extends Component {
 
 	render() {
 		return(
-			<td className={this.props.type} >
-				{ this.props.val }
+			<td 
+				className={this.props.keyType} 
+				value={this.props.keyValue}
+				onClick={this.props.handlerFunction}
+			>
+				{ this.props.keyValue }
 			</td>
 		)
 	}

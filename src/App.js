@@ -12,10 +12,10 @@ function App() {
       </header>
       <div className="App-body">
         <div className="Calculator">
-          <div className="Display">
+          <div id="Display">
              ticker 
           </div>
-          <Keypad/>
+          <Keypad id="Keypad" />
         </div>
       </div>
     </div>

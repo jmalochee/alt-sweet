@@ -4,98 +4,129 @@ import Key from "./Key";
 class Keypad extends Component {
 	constructor(props) {
 		super(props)
+		this.state = {
+			display: ""
+		}
+		this.keyPress = this.keyPress.bind(this)
+	}
+
+	keyPress(event) {
+		let value = event.target.getAttribute('value')
+		let string = this.state.display
+		this.setState({ display: string.concat(value) })
+		console.log(this.state.display)
 	}
 
 	render() {
 		return(
-			<table className="Keypad">
+			<table id="Keypad">
 				<tbody>
 	              <tr>
 	                <Key 
-	                	type="AC" 
-	                	val="ac"
+	                	keyType="AC" 
+	                	keyValue="ac"
+	                	handlerFunction={this.keyPress}
 	                />
 	                <Key 
-	                	type="Number" 
-	                	val="1"
+	                	keyType="Number" 
+	                	keyValue="1"
+	                	handlerFunction={this.keyPress}
 	                />
 	                <Key 
-	                	type="Number" 
-	                	val="2"
+	                	keyType="Number" 
+	                	keyValue="2"
+	                	handlerFunction={this.keyPress}
 	                />
 	                <Key 
-	                	type="Number" 
-	                	val="3"
+	                	keyType="Number" 
+	                	keyValue="3"
+	                	handlerFunction={this.keyPress}
 	                />
 	                <Key 
-	                	type="Operator" 
-	                	val="/"
-	                />
-	              </tr>
-	              <tr>
-	                <Key 
-	                	type="Unit" 
-	                	val="small"
-	                />
-	                <Key 
-	                	type="Number" 
-	                	val="4"
-	                />
-	                <Key 
-	                	type="Number" 
-	                	val="5"
-	                />
-	                <Key 
-	                	type="Number" 
-	                	val="6"
-	                />
-	                <Key 
-	                	type="Operator" 
-	                	val="x"
+	                	keyType="Operator" 
+	                	keyValue=" / "
+	                	handlerFunction={this.keyPress}
 	                />
 	              </tr>
 	              <tr>
 	                <Key 
-	                	type="Unit" 
-	                	val="med"
+	                	keyType="Unit" 
+	                	keyValue="small"
+	                	handlerFunction={this.keyPress}
 	                />
 	                <Key 
-	                	type="Number" 
-	                	val="7"
+	                	keyType="Number" 
+	                	keyValue="4"
+	                	handlerFunction={this.keyPress}
 	                />
 	                <Key 
-	                	type="Number" 
-	                	val="8"
+	                	keyType="Number" 
+	                	keyValue="5"
+	                	handlerFunction={this.keyPress}
 	                />
 	                <Key 
-	                	type="Number" 
-	                	val="9"
+	                	keyType="Number" 
+	                	keyValue="6"
+	                	handlerFunction={this.keyPress}
 	                />
 	                <Key 
-	                	type="Operator" 
-	                	val="-"
+	                	keyType="Operator" 
+	                	keyValue=" x "
+	                	handlerFunction={this.keyPress}
 	                />
 	              </tr>
 	              <tr>
 	                <Key 
-	                	type="Unit" 
-	                	val="big"
+	                	keyType="Unit" 
+	                	keyValue="med"
+	                	handlerFunction={this.keyPress}
 	                />
 	                <Key 
-	                	type="Number" 
-	                	val="."
+	                	keyType="Number" 
+	                	keyValue="7"
+	                	handlerFunction={this.keyPress}
 	                />
 	                <Key 
-	                	type="Number" 
-	                	val="0"
+	                	keyType="Number" 
+	                	keyValue="8"
+	                	handlerFunction={this.keyPress}
 	                />
 	                <Key 
-	                	type="Number" 
-	                	val="x/y"
+	                	keyType="Number" 
+	                	keyValue="9"
+	                	handlerFunction={this.keyPress}
 	                />
 	                <Key 
-	                	type="Operator" 
-	                	val="+"
+	                	keyType="Operator" 
+	                	keyValue=" - "
+	                	handlerFunction={this.keyPress}
+	                />
+	              </tr>
+	              <tr>
+	                <Key 
+	                	keyType="Unit" 
+	                	keyValue="big"
+	                	handlerFunction={this.keyPress}
+	                />
+	                <Key 
+	                	keyType="Number" 
+	                	keyValue="."
+	                	handlerFunction={this.keyPress}
+	                />
+	                <Key 
+	                	keyType="Number" 
+	                	keyValue="0"
+	                	handlerFunction={this.keyPress}
+	                />
+	                <Key 
+	                	keyType="Number" 
+	                	keyValue="x/y"
+	                	handlerFunction={this.keyPress}
+	                />
+	                <Key 
+	                	keyType="Operator" 
+	                	keyValue=" + "
+	                	handlerFunction={this.keyPress}
 	                />
 	              </tr>
 	        	</tbody>
