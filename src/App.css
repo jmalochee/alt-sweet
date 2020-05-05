@@ -15,7 +15,7 @@
 	width: 50vmin;
 }
 
-.Display {
+#Display {
 	width: 100%;
 	background-color: rgba(64,66,68,.8);
 	border-radius: 1vmin;

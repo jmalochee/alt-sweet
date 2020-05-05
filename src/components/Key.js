@@ -1,17 +1,14 @@
-import React, {Component} from "react"
+import React from "react"
 
-class Key extends Component {
-	constructor(props) {
-		super(props)
-	}
-
-	render() {
-		return(
-			<td className={this.props.type} >
-				{ this.props.val }
-			</td>
-		)
-	}
+const Key = props => {
+	return(
+		<td 
+			className={props.keyType}
+			onClick={props.handlerFunction}
+		>
+			{ props.keyValue }
+		</td>
+	)
 }
 
 export default Key
