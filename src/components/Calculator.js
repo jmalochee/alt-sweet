@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import Key from "./Key";
+import Display from "./Display";
 
-class Keypad extends Component {
+class Calculator extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -9,10 +10,18 @@ class Keypad extends Component {
 		}
 	}
 	
-	keyPress = (event, value) => {
+	buttonHandler = (event, value) => {
 		let string = this.state.display
 		this.setState({ display: string.concat(value) })
-		console.log(this.state.display)
+	}
+
+	keyPressHandler = (event) => {
+		let string = this.state.display
+		this.setState({ display: string.concat(event.key) })
+	}
+
+	componentDidMount(){
+    document.addEventListener("keypress", this.keyPressHandler);
 	}
 
 	render() {
@@ -31,20 +40,25 @@ class Keypad extends Component {
 						key={index}
 						keyType={key[1]}
 						keyValue={key[0]}
-						handlerFunction={(event) => (this.keyPress(event, key[0]))}
+						handlerFunction={(event) => (this.buttonHandler(event, key[0]))}
 					/>
 				))}
 			</tr>
 		))
 
 		return(
-			<table id="Keypad">
-				<tbody>
-					{keyLayout}
-    		</tbody>
-      </table>
+			<div id="Calculator">
+				<Display value={this.state.display}/>
+				<div>
+					<table id="Keypad">
+						<tbody>
+							{keyLayout}
+		    		</tbody>
+		      </table>
+		    </div>
+	    </div>
 		)
 	}
 }
 
-export default Keypad
+export default Calculator
