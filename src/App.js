@@ -1,5 +1,5 @@
 import React from 'react';
-import Keypad from "./components/Keypad"
+import Calculator from "./components/Calculator"
 import './App.css';
 
 function App() {
@@ -11,12 +11,7 @@ function App() {
         </p>
       </header>
       <div className="App-body">
-        <div className="Calculator">
-          <div id="Display">
-             ticker 
-          </div>
-          <Keypad id="Keypad" />
-        </div>
+        <Calculator/>
       </div>
     </div>
   );

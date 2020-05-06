@@ -10,7 +10,7 @@
   color: white;
 }
 
-.Calculator {
+#Calculator {
 	height: 50vmin;
 	width: 50vmin;
 }
