@@ -12,6 +12,7 @@ const btnProps = [
 
 const allowedChars = [".", "/", "+", "-", "*", "x", "t", "cup", "tsp", "tbsp"]
 
+
 class Calculator extends Component {
 	constructor(props) {
 		super(props)
