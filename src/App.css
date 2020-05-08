@@ -11,8 +11,8 @@
 }
 
 #Calculator {
-	height: 50vmin;
-	width: 50vmin;
+	height: 80vmin;
+	width: 80vmin;
 }
 
 #Display {
@@ -21,7 +21,7 @@
 	background-color: rgba(64,66,68,.8);
 	border-radius: 1vmin;
 	text-align: right;
-	font-size: 4vmin;
+	font-size: 8vmin;
 	padding: 2vmin;
 	box-sizing: border-box;
 }
@@ -39,8 +39,10 @@ button {
 	width: 20%;
 	border-radius: 1vmin;
 	float: left;
+	font: inherit;
+	color: inherit;
 }
-.Button:hover {
+button:hover {
 	filter: brightness(125%);
 }
 
