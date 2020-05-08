@@ -34,5 +34,25 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "Convert between sweeteners, units and amounts.",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmalochee/alt-sweet.git"
+  },
+  "keywords": [
+    "converter",
+    "calculator",
+    "low-carb",
+    "keto",
+    "recipe"
+  ],
+  "author": "jmalochee",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/jmalochee/alt-sweet/issues"
+  },
+  "homepage": "https://github.com/jmalochee/alt-sweet#readme"
 }
