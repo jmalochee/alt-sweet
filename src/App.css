@@ -17,6 +17,7 @@
 
 #Display {
 	width: 100%;
+	height: 20%;
 	background-color: rgba(64,66,68,.8);
 	border-radius: 1vmin;
 	text-align: right;
@@ -25,18 +26,21 @@
 	box-sizing: border-box;
 }
 
-table {
-	height: 100%;
+#Keypad {
+	height: 80%;
 	width: 100%;
+	overflow: hidden;
 }
 
-td {
+button {
+	box-sizing: border-box;
 	text-align: center;
-	height: 10%;
+	height: 20%;
 	width: 20%;
 	border-radius: 1vmin;
+	float: left;
 }
-td:hover {
+.Button:hover {
 	filter: brightness(125%);
 }
 
@@ -52,6 +56,6 @@ td:hover {
 	background-color: #9366D0;
 }
 
-.AC {
+.Clear {
 	background-color: #A8A04D;
 }
