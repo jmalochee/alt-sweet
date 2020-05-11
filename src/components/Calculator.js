@@ -4,10 +4,26 @@ import Display from "./Display";
 
 //the style choice here mimics keypad arrangement
 const btnProps = [
-	["cup","Unit"],["1","Number"],["2","Number"],["3","Number"],["/","Operator"],
-	["tbsp","Unit"],["4","Number"],["5","Number"],["6","Number"],["x","Operator"],
-	["tsp","Unit"],["7","Number"],["8","Number"],["9","Number"],["-","Operator"],
-	["ac","Clear"],["del", "Clear"],["0","Number"],[".","Number"],["+","Operator"]
+	{val: "cup", type: "Unit"},
+	{val: "1", type: "Number"},
+	{val: "2", type: "Number"},
+	{val: "3", type: "Number"},
+	{val: "/", type: "Operator"},
+	{val: "tbsp", type: "Unit"},
+	{val: "4", type: "Number"},
+	{val: "5", type: "Number"},
+	{val: "6", type: "Number"},
+	{val: "x", type: "Operator"},
+	{val: "tsp", type: "Unit"},
+	{val: "7", type: "Number"},
+	{val: "8", type: "Number"},
+	{val: "9", type: "Number"},
+	{val: "-", type: "Operator"},
+	{val: "ac", type: "Ac"},
+	{val: "del", type: "Del"},
+	{val: "0", type: "Number"},
+	{val: ".", type: "Number"},
+	{val: "+", type: "Operator"}
 ];
 
 const allowedChars = [".", "/", "+", "-", "*", "x", "t", "cup", "tsp", "tbsp"]
@@ -25,60 +41,59 @@ class Calculator extends Component {
 		}
 	}
 	
-	keyPressHandler = (event) => {
+	getKeyPressValue = (event) => {
+		this.inputHandler(event.key)
+	}
+
+	getButtonValue = (event) => {
+		this.inputHandler(event.target.value)
+	}
+
+	inputHandler = (value) => {
 		let string = this.state.display
-		if(event.key === "Backspace") {
-			this.setState({ display: string.slice(0, -1)})
+		if(["Backspace", "del"].includes(value)) {
+			this.delete()
+		} else if(value === "ac") {
+			this.clear()
 		} else if(this.state.display.slice(-1) === "t") {
-			if(event.key.toLowerCase() === "b") {
-				this.setState({ display: string.concat("bsp ")})
-			} else if(event.key.toLowerCase() === "s") {
-				this.setState({ display: string.concat("sp ")})
+			if(value.toLowerCase() === "b") {
+				this.addChar("bsp ")
+			} else if(value.toLowerCase() === "s") {
+				this.addChar("sp ")
 			}
-		} else if(allowedChars.includes(event.key) || !isNaN(event.key)) {
-			this.setState({ display: string.concat(event.key) })
-		} else if(event.key.toLowerCase() === "c") {
-			this.setState({ display: string.concat("cup ") })
+		} else if(allowedChars.includes(value) || !isNaN(value)) {
+			this.addChar(value)
+		} else if(value.toLowerCase() === "c") {
+			this.addChar("cup ")
 		}
 	}
 	
-	acHandler = () => {
+	clear = () => {
 		this.setState({display: ""})
 	}
 
-	delHandler = () => {
+	delete = () => {
 		let string = this.state.display
 		this.setState({ display: string.slice(0, -1)})
 	}
 
-	numberHandler = (event) => {
+	addChar = (value) => {
 		let string = this.state.display
-		this.setState({ display: string.concat(event.target.value) })
-	}
-
-	buttonHandler = (event) => {
-		if(allowedChars.includes(event.target.value) || !isNaN(event.target.value)) {
-			this.numberHandler(event)
-		} else if(event.target.value === "ac") {
-			this.acHandler()
-		} else if(event.target.value === "del") {
-			this.delHandler()
-		} else if (event.target.value.toLowerCase() === "t") {
-			this.numberHandler(event)
-		}
+		this.setState({ display: string.concat(value) })
 	}
 
 	componentDidMount(){
-    document.addEventListener("keydown", this.keyPressHandler);
+    document.addEventListener("keydown", this.getKeyPressValue);
 	}
 
 	render() {
 		const btnLayout = btnProps.map((btn, index) => (
+
 			<Button
 				key={index}
-				btnType={btn[1]}
-				btnValue={btn[0]}
-				handlerFunction={(event) => this.buttonHandler(event)}
+				btnType={btn.type}
+				btnValue={btn.val}
+				handlerFunction={this.getButtonValue}
 			/>
 		))
 
