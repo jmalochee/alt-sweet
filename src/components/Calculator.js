@@ -26,7 +26,9 @@ const btnProps = [
 	{val: "+", type: "Operator"}
 ];
 
-const allowedChars = [".", "/", "+", "-", "*", "x", "t", "cup", "tsp", "tbsp"]
+const allowedUnits = ["cup", "tbsp", "tsp"]
+
+const allowedChars = [".", "/", "+", "-", "*", "x"]
 
 class Calculator extends Component {
 	constructor(props) {
@@ -34,7 +36,7 @@ class Calculator extends Component {
 		this.state = {
 			display: "",
 			amt: {
-				qty: 0,
+				qty: "",
 				unit: ""
 			},
 			amts: []
@@ -50,40 +52,87 @@ class Calculator extends Component {
 	}
 
 	inputHandler = (value) => {
-		let string = this.state.display
 		if(["Backspace", "del"].includes(value)) {
 			this.delete()
 		} else if(value === "ac") {
 			this.clear()
-		} else if(this.state.display.slice(-1) === "t") {
-			if(value.toLowerCase() === "b") {
-				this.addChar("bsp ")
-			} else if(value.toLowerCase() === "s") {
-				this.addChar("sp ")
-			}
 		} else if(allowedChars.includes(value) || !isNaN(value)) {
-			this.addChar(value)
-		} else if(value.toLowerCase() === "c") {
-			this.addChar("cup ")
+			if(this.state.amt.unit === "") {
+				this.addToAmtQty(value)
+			}
+		} else if(this.state.amt.qty !== "") {
+			this.unitHandler(value)
 		}
 	}
-	
+
+	unitHandler = (value) => {
+		console.log("unitHandler")
+		if(this.state.amt.unit.slice(-1) === "t") {
+			console.log("in")
+			if(value.toLowerCase() === "b") {
+				this.addToAmtUnit("bsp")
+			} else if(value.toLowerCase() === "s") {
+				this.addToAmtUnit("sp")
+			}
+		} else if(value.toLowerCase() === "c") {
+			this.addToAmtUnit("cup")
+		} else if(allowedUnits.concat(["t"]).includes(value)) {
+			this.addToAmtUnit(value)
+		}
+	}
+
 	clear = () => {
-		this.setState({display: ""})
+		this.setState({
+			display: "",
+			amt: {
+				qty: "",
+				unit: ""
+			},
+			amts: []
+		})
 	}
 
 	delete = () => {
-		let string = this.state.display
-		this.setState({ display: string.slice(0, -1)})
+		this.setDisplay()
 	}
 
-	addChar = (value) => {
-		let string = this.state.display
-		this.setState({ display: string.concat(value) })
+	addToAmtQty = (value) => {
+		let amt = this.state.amt
+		amt.qty = amt.qty + value
+		this.setState({ amt: amt })
+		this.setDisplay()
+	}
+
+	addToAmtUnit = (value) => {
+		let amt = this.state.amt
+		amt.unit = amt.unit.concat(value)
+		this.setState({ amt: amt })
+		if (allowedUnits.includes(amt.unit)) {
+			this.newAmt()
+		}
+		this.setDisplay()
+	}
+
+	setDisplay = () => {
+		this.setState({ 
+			display: this.state.amts.concat(this.state.amt).map(i => i.qty + i.unit)
+		})
+		console.log(this.state.amt)
+	}
+
+	newAmt = () => {
+		let amts = this.state.amts.concat(this.state.amt)
+		this.setState({ 
+			amts: amts,
+			amt: {
+				qty: "",
+				unit: ""
+			}
+		})		
 	}
 
 	componentDidMount(){
-    document.addEventListener("keydown", this.getKeyPressValue);
+    document.addEventListener("keydown", this.getKeyPressValue)
 	}
 
 	render() {
