@@ -27,12 +27,6 @@ const btnProps = [
 	{val: "+", type: "Operator"}
 ];
 
-const unitFormat = {
-	cu: "cup",
-	tb: "tbsp",
-	ts: "tsp"
-}
-
 const allowedUnits = ["cup", "tbsp", "tsp"]
 
 const allowedChars = [".", "/", "+", "-", "*", "x"]
@@ -131,16 +125,6 @@ class Calculator extends Component {
 		}
 	}
 
-	setDisplay = () => {
-		let amts = this.state.amts
-		let display = ""
-		amts.forEach(amt => {
-			display += (amt.scalar.toString() + unitFormat[amt._units] + " ")
-		})
-		display += (this.state.amt.qty + this.state.amt.unit)
-		this.setState({ display: display })
-	}
-
 	newAmt = () => {
 		let qty = Qty(this.state.amt.qty + this.state.amt.unit)
 		let amts = this.state.amts
@@ -171,7 +155,10 @@ class Calculator extends Component {
 
 		return(
 			<div id="Calculator">
-				<Display value={this.state.display}/>
+				<Display 
+					amt={this.state.amt}
+					amts={this.state.amts}
+				/>
 				<div id="Keypad">
 					{btnLayout}
 		    </div>
