@@ -63,3 +63,11 @@ button:hover {
 .Del, .Ac {
 	background-color: #A8A04D;
 }
+
+.amt {
+	padding-left: 2vmin;
+	padding-right: 2vmin;
+	padding-bottom: 1vmin;
+	background-color: gray;
+	border-radius: 5vmin;
+}
