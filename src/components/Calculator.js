@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Button from "./Button";
 import Display from "./Display";
+import Qty from "js-quantities"
 
 //the style choice here mimics keypad arrangement
 const btnProps = [
@@ -25,6 +26,12 @@ const btnProps = [
 	{val: ".", type: "Number"},
 	{val: "+", type: "Operator"}
 ];
+
+const unitFormat = {
+	cu: "cup",
+	tb: "tbsp",
+	ts: "tsp"
+}
 
 const allowedUnits = ["cup", "tbsp", "tsp"]
 
@@ -107,21 +114,26 @@ class Calculator extends Component {
 		let amt = this.state.amt
 		amt.unit = amt.unit.concat(value)
 		this.setState({ amt: amt })
+		this.setDisplay()
 		if (allowedUnits.includes(amt.unit)) {
 			this.newAmt()
 		}
-		this.setDisplay()
 	}
 
 	setDisplay = () => {
-		this.setState({ 
-			display: this.state.amts.concat(this.state.amt).map(i => i.qty + i.unit)
+		let amts = this.state.amts
+		let display = ""
+		amts.forEach(amt => {
+			display += (amt.scalar.toString() + unitFormat[amt._units] + " ")
 		})
-		console.log(this.state.amt)
+		display += (this.state.amt.qty + this.state.amt.unit)
+		this.setState({ display: display })
 	}
 
 	newAmt = () => {
-		let amts = this.state.amts.concat(this.state.amt)
+		let qty = Qty(this.state.amt.qty + this.state.amt.unit)
+		let amts = this.state.amts
+		amts.push(qty)
 		this.setState({ 
 			amts: amts,
 			amt: {
