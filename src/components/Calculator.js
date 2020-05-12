@@ -73,9 +73,7 @@ class Calculator extends Component {
 	}
 
 	unitHandler = (value) => {
-		console.log("unitHandler")
 		if(this.state.amt.unit.slice(-1) === "t") {
-			console.log("in")
 			if(value.toLowerCase() === "b") {
 				this.addToAmtUnit("bsp")
 			} else if(value.toLowerCase() === "s") {
@@ -100,6 +98,19 @@ class Calculator extends Component {
 	}
 
 	delete = () => {
+		if(this.state.amt.unit !== "") {
+			let amt = this.state.amt
+			amt.unit = ""
+			this.setState({ amt: amt })
+		} else if (this.state.amt.qty !=="") {
+			let amt = this.state.amt
+			amt.qty = amt.qty.slice(0, -1)
+			this.setState({ amt: amt })
+		} else {
+			let amts = this.state.amts
+			amts.pop()
+			this.setState({ amts: amts })
+		}
 		this.setDisplay()
 	}
 
