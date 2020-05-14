@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Button from "./Button";
 import Display from "./Display";
 import Qty from "js-quantities"
+import SelectField from "./SelectField"
 
 //the style choice here mimics keypad arrangement
 const btnProps = [
@@ -40,7 +41,9 @@ class Calculator extends Component {
 				qty: "",
 				unit: ""
 			},
-			amts: []
+			amts: [],
+			from: "",
+			to: ""
 		}
 	}
 	
@@ -138,13 +141,20 @@ class Calculator extends Component {
 		})		
 	}
 
+	selectFrom = (event) => {
+		this.setState({ from: event.value })
+	}
+
+	selectTo = (event) => {
+		this.setState({ to: event.value })
+	}
+
 	componentDidMount(){
     document.addEventListener("keydown", this.getKeyPressValue)
 	}
 
 	render() {
 		const btnLayout = btnProps.map((btn, index) => (
-
 			<Button
 				key={index}
 				btnType={btn.type}
@@ -155,6 +165,24 @@ class Calculator extends Component {
 
 		return(
 			<div id="Calculator">
+				<div id="from-to">
+					<div id="from">
+						<SelectField 
+							name="select-from"
+							label="recipe sweetner"
+							selectedOption={this.state.from}
+							handlerFunction={this.selectFrom}
+						/>
+					</div>
+					<div id="to">
+						<SelectField 
+							name="select-to"
+							label="preferred sweetner"
+							selectedOption={this.state.to}
+							handlerFunction={this.selectTo}
+						/>
+					</div>
+				</div>
 				<Display 
 					amt={this.state.amt}
 					amts={this.state.amts}

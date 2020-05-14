@@ -71,3 +71,11 @@ button:hover {
 	background-color: gray;
 	border-radius: 5vmin;
 }
+
+#from-to {
+	display: flex;
+}
+
+#from, #to {
+	width: 50%;
+}
