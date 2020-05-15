@@ -17,7 +17,7 @@ const Display = props => {
 	})
 
 	return(
-		<div id="Display" >
+		<div className="display" id={props.id} >
 			{feedDisplay} {props.amt.qty + props.amt.unit }
 		</div>
 	)

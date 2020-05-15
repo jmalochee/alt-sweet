@@ -10,24 +10,13 @@
   color: white;
 }
 
-#Calculator {
-	height: 80vmin;
+#calculator {
+	height: 95vmin;
 	width: 80vmin;
 }
 
-#Display {
-	width: 100%;
-	height: 20%;
-	background-color: rgba(64,66,68,.8);
-	border-radius: 1vmin;
-	text-align: right;
-	font-size: 8vmin;
-	padding: 2vmin;
-	box-sizing: border-box;
-}
-
-#Keypad {
-	height: 80%;
+#keypad {
+	height: 65vmin;
 	width: 100%;
 	overflow: hidden;
 }
@@ -48,19 +37,19 @@ button:hover {
 	filter: brightness(125%);
 }
 
-.Number {
+.number {
 	background-color: #646668;
 }
 
-.Operator {
+.operator {
 	background-color: #30A5B4;
 }
 
-.Unit {
+.unit {
 	background-color: #9366D0;
 }
 
-.Del, .Ac {
+.del, .ac {
 	background-color: #A8A04D;
 }
 
@@ -72,10 +61,34 @@ button:hover {
 	border-radius: 5vmin;
 }
 
-#from-to {
-	display: flex;
+.display {
+	width: 100%;
+	height: 10vmin;
+	background-color: rgba(64,66,68,.8);
+	border-radius: 1vmin;
+	text-align: right;
+	font-size: 8vmin;
+	padding: 2vmin;
+	box-sizing: border-box;
 }
 
-#from, #to {
+#from-to {
+	display: flex;
+	height: 20vmin;
+}
+
+.convert-box{
+	height: 100%;
 	width: 50%;
+}
+
+select{
+	background-color: #656668;
+	border-radius: 1vmin;
+	font: inherit;
+	color: inherit;
+	border-width: 0.3vmin;
+	border-color: #BABABA;
+	width: 100%;
+	margin-top: 2.5vmin;
 }
