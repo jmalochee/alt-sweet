@@ -12,19 +12,35 @@ const ConvertBox = props => {
 		<option value={item.value} key={index}> {item.name} </option>
 	))
 
-	const whichSweetener = () => {if(props.convertSide === "to"){
-		return "preferred"
-	} else if (props.convertSide === "from"){
-		return "original"
-	}}
+	const whichSweetener = () => {
+		if(props.convertSide === "to"){
+			return "preferred"
+		} else if (props.convertSide === "from"){
+			return "original"
+		}
+	}
+
+	const whichDisplay = () => {
+		if(props.convertSide === "from"){
+			return (
+				<Display
+					id={"display-" + props.convertSide}
+					amt={noAmt}
+					amts={props.amts}
+				/>
+			)
+		} else if(props.convertSide === "to"){
+			return (
+				<div className="display"/>
+			)
+		}
+	}
+
+	const noAmt = {qty: "", unit: ""}
 
 	return(
 		<div className="convert-box" id={props.convertSide}>
-			<Display
-				id={"display-" + props.convertSide}
-				amt={props.amt}
-				amts={props.amts}
-			/>
+			{whichDisplay()}
 			<select 
 				name={"select-" + props.convertSide} 
 				value={props.selectedOption} 

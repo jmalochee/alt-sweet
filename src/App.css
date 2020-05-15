@@ -67,8 +67,8 @@ button:hover {
 	background-color: rgba(64,66,68,.8);
 	border-radius: 1vmin;
 	text-align: right;
-	font-size: 8vmin;
-	padding: 2vmin;
+	font-size: 5vmin;
+	padding: 1.5vmin 2vmin 2vmin 2vmin;
 	box-sizing: border-box;
 }
 

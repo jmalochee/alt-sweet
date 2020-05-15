@@ -108,21 +108,18 @@ class Calculator extends Component {
 			amts.pop()
 			this.setState({ amts: amts })
 		}
-		this.setDisplay()
 	}
 
 	addToAmtQty = (value) => {
 		let amt = this.state.amt
 		amt.qty = amt.qty + value
 		this.setState({ amt: amt })
-		this.setDisplay()
 	}
 
 	addToAmtUnit = (value) => {
 		let amt = this.state.amt
 		amt.unit = amt.unit.concat(value)
 		this.setState({ amt: amt })
-		this.setDisplay()
 		if (allowedUnits.includes(amt.unit)) {
 			this.newAmt()
 		}
@@ -139,6 +136,14 @@ class Calculator extends Component {
 				unit: ""
 			}
 		})		
+	}
+
+	displayFrom = () => {
+
+	}
+
+	displayTo = () => {
+
 	}
 
 	selectFrom = (event) => {
@@ -169,7 +174,6 @@ class Calculator extends Component {
 					<ConvertBox 
 						convertSide="from"
 						label="recipe sweetner"
-						amt={this.state.amt}
 						amts={this.state.amts}
 						selectedOption={this.state.from}
 						selectHandlerFunction={this.selectFrom}
@@ -177,7 +181,6 @@ class Calculator extends Component {
 					<ConvertBox 
 						convertSide="to"
 						label="preferred sweetner"
-						amt={this.state.amt}
 						amts={this.state.amts}
 						selectedOption={this.state.to}
 						selectHandlerFunction={this.selectTo}
