@@ -172,13 +172,6 @@ class Calculator extends Component {
 			<div id="calculator">
 				<div id="from-to">
 					<ConvertBox 
-						convertSide="from"
-						label="recipe sweetner"
-						amts={this.state.amts}
-						selectedOption={this.state.from}
-						selectHandlerFunction={this.selectFrom}
-					/>
-					<ConvertBox 
 						convertSide="to"
 						label="preferred sweetner"
 						amts={this.state.amts}

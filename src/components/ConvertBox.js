@@ -40,7 +40,6 @@ const ConvertBox = props => {
 
 	return(
 		<div className="convert-box" id={props.convertSide}>
-			{whichDisplay()}
 			<select 
 				name={"select-" + props.convertSide} 
 				value={props.selectedOption} 
@@ -49,6 +48,7 @@ const ConvertBox = props => {
 				<option value="" disabled>{whichSweetener()} sweetener</option>
 				{optionElements}
 			</select>
+			{whichDisplay()}
 		</div>
 	)
 }

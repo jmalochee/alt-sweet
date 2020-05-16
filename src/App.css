@@ -79,7 +79,7 @@ button:hover {
 
 .convert-box{
 	height: 100%;
-	width: 50%;
+	width: 100%;
 }
 
 select{
@@ -90,5 +90,5 @@ select{
 	border-width: 0.3vmin;
 	border-color: #BABABA;
 	width: 100%;
-	margin-top: 2.5vmin;
+	margin-bottom: 2.5vmin;
 }
