@@ -2,29 +2,30 @@ import React, {Component} from "react";
 import Button from "./Button";
 import Display from "./Display";
 import Qty from "js-quantities"
+import ConvertBox from "./ConvertBox"
 
 //the style choice here mimics keypad arrangement
 const btnProps = [
-	{val: "cup", type: "Unit"},
-	{val: "1", type: "Number"},
-	{val: "2", type: "Number"},
-	{val: "3", type: "Number"},
-	{val: "/", type: "Operator"},
-	{val: "tbsp", type: "Unit"},
-	{val: "4", type: "Number"},
-	{val: "5", type: "Number"},
-	{val: "6", type: "Number"},
-	{val: "x", type: "Operator"},
-	{val: "tsp", type: "Unit"},
-	{val: "7", type: "Number"},
-	{val: "8", type: "Number"},
-	{val: "9", type: "Number"},
-	{val: "-", type: "Operator"},
-	{val: "ac", type: "Ac"},
-	{val: "del", type: "Del"},
-	{val: "0", type: "Number"},
-	{val: ".", type: "Number"},
-	{val: "+", type: "Operator"}
+	{val: "cup", type: "unit"},
+	{val: "1", type: "number"},
+	{val: "2", type: "number"},
+	{val: "3", type: "number"},
+	{val: "/", type: "operator"},
+	{val: "tbsp", type: "unit"},
+	{val: "4", type: "number"},
+	{val: "5", type: "number"},
+	{val: "6", type: "number"},
+	{val: "x", type: "operator"},
+	{val: "tsp", type: "unit"},
+	{val: "7", type: "number"},
+	{val: "8", type: "number"},
+	{val: "9", type: "number"},
+	{val: "-", type: "operator"},
+	{val: "ac", type: "ac"},
+	{val: "del", type: "del"},
+	{val: "0", type: "number"},
+	{val: ".", type: "number"},
+	{val: "+", type: "operator"}
 ];
 
 const allowedUnits = ["cup", "tbsp", "tsp"]
@@ -40,7 +41,9 @@ class Calculator extends Component {
 				qty: "",
 				unit: ""
 			},
-			amts: []
+			amts: [],
+			from: "",
+			to: ""
 		}
 	}
 	
@@ -105,21 +108,18 @@ class Calculator extends Component {
 			amts.pop()
 			this.setState({ amts: amts })
 		}
-		this.setDisplay()
 	}
 
 	addToAmtQty = (value) => {
 		let amt = this.state.amt
 		amt.qty = amt.qty + value
 		this.setState({ amt: amt })
-		this.setDisplay()
 	}
 
 	addToAmtUnit = (value) => {
 		let amt = this.state.amt
 		amt.unit = amt.unit.concat(value)
 		this.setState({ amt: amt })
-		this.setDisplay()
 		if (allowedUnits.includes(amt.unit)) {
 			this.newAmt()
 		}
@@ -138,13 +138,28 @@ class Calculator extends Component {
 		})		
 	}
 
+	displayFrom = () => {
+
+	}
+
+	displayTo = () => {
+
+	}
+
+	selectFrom = (event) => {
+		this.setState({ from: event.value })
+	}
+
+	selectTo = (event) => {
+		this.setState({ to: event.value })
+	}
+
 	componentDidMount(){
     document.addEventListener("keydown", this.getKeyPressValue)
 	}
 
 	render() {
 		const btnLayout = btnProps.map((btn, index) => (
-
 			<Button
 				key={index}
 				btnType={btn.type}
@@ -154,12 +169,29 @@ class Calculator extends Component {
 		))
 
 		return(
-			<div id="Calculator">
-				<Display 
+			<div id="calculator">
+				<div id="from-to">
+					<ConvertBox 
+						convertSide="from"
+						label="recipe sweetner"
+						amts={this.state.amts}
+						selectedOption={this.state.from}
+						selectHandlerFunction={this.selectFrom}
+					/>
+					<ConvertBox 
+						convertSide="to"
+						label="preferred sweetner"
+						amts={this.state.amts}
+						selectedOption={this.state.to}
+						selectHandlerFunction={this.selectTo}
+					/>
+				</div>
+				<Display
+					id="input-display" 
 					amt={this.state.amt}
 					amts={this.state.amts}
 				/>
-				<div id="Keypad">
+				<div id="keypad">
 					{btnLayout}
 		    </div>
 	    </div>
