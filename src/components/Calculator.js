@@ -2,9 +2,7 @@ import React, {Component} from "react";
 import Button from "./Button";
 import Display from "./Display";
 import Qty from "js-quantities"
-import ConvertBox from "./ConvertBox"
 
-//the style choice here mimics keypad arrangement
 const btnProps = [
 	{val: "cup", type: "unit"},
 	{val: "1", type: "number"},
@@ -32,6 +30,17 @@ const allowedUnits = ["cup", "tbsp", "tsp"]
 
 const allowedChars = [".", "/", "+", "-", "*", "x"]
 
+//placeholder values
+const options = [
+	{ name: "triple", value: "3" },
+	{ name: "double", value: "2" },
+	{ name: "single", value: "1" }
+]
+
+const optionElements = options.map((option, index) => (
+	<option value={option.value} key={index}> {option.name} </option>
+))
+
 class Calculator extends Component {
 	constructor(props) {
 		super(props)
@@ -47,7 +56,7 @@ class Calculator extends Component {
 		}
 	}
 	
-	getKeyPressValue = (event) => {
+	getKeydownValue = (event) => {
 		this.inputHandler(event.key)
 	}
 
@@ -65,11 +74,11 @@ class Calculator extends Component {
 				this.addToAmtQty(value)
 			}
 		} else if(this.state.amt.qty !== "") {
-			this.unitHandler(value)
+			this.unitKeydownHandler(value)
 		}
 	}
 
-	unitHandler = (value) => {
+	unitKeydownHandler = (value) => {
 		if(this.state.amt.unit.slice(-1) === "t") {
 			if(value.toLowerCase() === "b") {
 				this.addToAmtUnit("bsp")
@@ -138,14 +147,6 @@ class Calculator extends Component {
 		})		
 	}
 
-	displayFrom = () => {
-
-	}
-
-	displayTo = () => {
-
-	}
-
 	selectFrom = (event) => {
 		this.setState({ from: event.value })
 	}
@@ -155,7 +156,7 @@ class Calculator extends Component {
 	}
 
 	componentDidMount(){
-    document.addEventListener("keydown", this.getKeyPressValue)
+    document.addEventListener("keydown", this.getKeydownValue)
 	}
 
 	render() {
@@ -171,26 +172,35 @@ class Calculator extends Component {
 		return(
 			<div id="calculator">
 				<div id="from-to">
-					<ConvertBox 
-						convertSide="from"
-						label="recipe sweetner"
+					<select 
+						name="select-to"
+						value={this.state.to} 
+						onChange={this.selectTo}
+					>
+						<option value="" disabled>preferred sweetener</option>
+						{optionElements}
+					</select>
+					<Display 
+						id="input-display" 
+						end="to"
+						amt={this.state.amt}
 						amts={this.state.amts}
-						selectedOption={this.state.from}
-						selectHandlerFunction={this.selectFrom}
 					/>
-					<ConvertBox 
-						convertSide="to"
-						label="preferred sweetner"
+					<select 
+						name="select-from" 
+						value={this.state.from} 
+						onChange={this.selectFrom}
+					>
+						<option value="" disabled>original sweetener</option>
+						{optionElements}
+					</select>
+					<Display
+						id="input-display" 
+						end="from"
+						amt={this.state.amt}
 						amts={this.state.amts}
-						selectedOption={this.state.to}
-						selectHandlerFunction={this.selectTo}
 					/>
 				</div>
-				<Display
-					id="input-display" 
-					amt={this.state.amt}
-					amts={this.state.amts}
-				/>
 				<div id="keypad">
 					{btnLayout}
 		    </div>

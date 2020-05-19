@@ -11,12 +11,12 @@
 }
 
 #calculator {
-	height: 95vmin;
+	height: 100vmin;
 	width: 80vmin;
 }
 
 #keypad {
-	height: 65vmin;
+	height: 57vmin;
 	width: 100%;
 	overflow: hidden;
 }
@@ -24,7 +24,7 @@
 button {
 	box-sizing: border-box;
 	text-align: center;
-	height: 20%;
+	height: 24%;
 	width: 15.5vmin;
 	border-radius: 1vmin;
 	float: left;
@@ -63,23 +63,18 @@ button:hover {
 
 .display {
 	width: 100%;
-	height: 10vmin;
+	height: 13vmin;
 	background-color: rgba(64,66,68,.8);
 	border-radius: 1vmin;
 	text-align: right;
-	font-size: 5vmin;
-	padding: 1.5vmin 2vmin 2vmin 2vmin;
+	font-size: 7vmin;
+	padding: 2vmin;
 	box-sizing: border-box;
 }
 
 #from-to {
-	display: flex;
-	height: 20vmin;
-}
-
-.convert-box{
-	height: 100%;
-	width: 50%;
+	height: 43vmin;
+	text-align: right;
 }
 
 select{
@@ -89,6 +84,7 @@ select{
 	color: inherit;
 	border-width: 0.3vmin;
 	border-color: #BABABA;
-	width: 100%;
-	margin-top: 2.5vmin;
+	width: 50%;
+	margin-top: 1.5vmin;
+	margin-bottom: 1.5vmin;
 }

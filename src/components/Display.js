@@ -16,9 +16,13 @@ const Display = props => {
 		)
 	})
 
+	const includeAmt = () => {if(props.end === "from") {
+		return props.amt.qty + props.amt.unit
+	}}
+
 	return(
 		<div className="display" id={props.id} >
-			{feedDisplay} {props.amt.qty + props.amt.unit }
+			{feedDisplay} {includeAmt()}
 		</div>
 	)
 }
