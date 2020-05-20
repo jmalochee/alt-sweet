@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Button from "./Button";
 import Display from "./Display";
 import Qty from "js-quantities"
+import './Calculator.css'
 
 const btnProps = [
 	{val: "cup", type: "unit"},

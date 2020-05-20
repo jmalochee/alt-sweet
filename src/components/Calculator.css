@@ -1,0 +1,27 @@
+#calculator {
+	height: 85vmin;
+	width: 80vmin;
+}
+
+#keypad {
+	height: 45vmin;
+	width: 100%;
+	overflow: hidden;
+}
+
+#from-to {
+	height: 35vmin;
+	text-align: right;
+}
+
+select{
+	background-color: #656668;
+	border-radius: 1vmin;
+	font: inherit;
+	color: inherit;
+	border-width: 0.3vmin;
+	border-color: #BABABA;
+	width: 50%;
+	margin-top: 1.5vmin;
+	margin-bottom: 1.5vmin;
+}
