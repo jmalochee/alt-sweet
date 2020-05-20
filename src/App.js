@@ -5,10 +5,8 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          convert low-carb sweeteners
-        </p>
+      <header className="header">
+          xSweet: your calculator for low-carb sweeteners
       </header>
       <div className="App-body">
         <Calculator/>
